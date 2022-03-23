@@ -47,7 +47,7 @@
         <tbody th:each="book, iStat : ${books}" >
         <td th:text="${iStat.index}+1" ></td>
         <td>
-            <a th:href="@{/book/info?book=__${book.bookID}__}" th:text="${book.title}"></a>
+            <a th:href="@{/book/info?book_id=__${book.bookID}__}" th:text="${book.title}"></a>
         </td>
         <td th:text="${book.year_release}"></td>
         <td th:text="${book.genre}"></td>
