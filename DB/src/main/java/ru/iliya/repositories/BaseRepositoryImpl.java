@@ -55,7 +55,16 @@ public class BaseRepositoryImpl implements BaseRepository {
     public List<Book> findByAuthor(String firstname, String lastName) {
         Author author = authorRepository.findAuthorByFirstNameAndLastName(firstname, lastName);
         List<Author> authors = new ArrayList<>();
-        authors.add(author);
+        if (author != null) {
+            authors.add(author);
+            return bookRepository.findByAuthors(authors);
+        }
+        authors = authorRepository.findByFirstNameLike(firstname);
+        if (authors.isEmpty()) {
+            //if only lastname written in field, then it stores into firstname param
+            authors = authorRepository.findByLastNameLike(firstname);
+        }
+
         return bookRepository.findByAuthors(authors);
     }
 

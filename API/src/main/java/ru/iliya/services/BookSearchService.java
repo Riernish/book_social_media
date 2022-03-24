@@ -44,7 +44,7 @@ public class BookSearchService {
             return baseRepository.findByGenre(genre);
         }
         if (titleIsEmpty && !authorIsEmpty && genreIsEmpty) {
-            return baseRepository.findByAuthor(names[1], names[2]);
+            return baseRepository.findByAuthor(names[0], names[1]);
         }
         if (!titleIsEmpty && authorIsEmpty && genreIsEmpty ) {
             return baseRepository.findBooksByTitle(title);
